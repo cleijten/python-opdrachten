@@ -27,6 +27,7 @@ def shortest_names(country_list):
 #2 get top 3 countries that have most vowels in name (aeiou)
 
 country_vowels = []
+new_country_list = []
 
 def most_vowels(country_list):
     for country in country_list:
@@ -39,7 +40,15 @@ def most_vowels(country_list):
                 nbr_of_vowels += 1
         country_vowels.append([country, nbr_of_vowels])
     sorted_country_vowels = sorted(country_vowels, key = lambda x: x[1])[-3:]
-    return(sorted_country_vowels)
+    
+    for element in sorted_country_vowels:
+        if type(element) is list:
+            for item in element:
+                new_country_list.append(item)
+        else:
+            new_country_list.append(element)
+        clist = new_country_list[0::2]
+    return(clist)
 
         
 
@@ -70,8 +79,6 @@ if __name__ == "__main__":
     countries = get_countries()
 
     """ Write the calls to your functions here. """
-shortest_names(countries)
-
-most_vowels(countries)
-
-alphabet_set(countries)
+    shortest_names(countries)
+    most_vowels(countries)
+    alphabet_set(countries)
