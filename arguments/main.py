@@ -13,30 +13,10 @@ print(greet("Bob", "What's up, <name>!"))
 
 #2 Force
 def force(mass, body='earth'):
-    gravity = 9.8
-
-    if body == 'sun':
-        gravity = 274
-    elif body == 'jupiter':
-        gravity = 24.9
-    elif body == 'neptune':
-        gravity = 11.2
-    elif body == 'saturn':
-        gravity = 10.4
-    elif body == 'uranus':
-        gravity = 8.9
-    elif body == 'venus':
-        gravity = 8.9
-    elif body == 'mars':
-        gravity = 3.7
-    elif body == 'mercury':
-        gravity = 3.7
-    elif body == 'moon':
-        gravity = 1.6
-    elif body == 'pluto':
-        gravity = 0.6
-    force_calc = mass * gravity
-    return print(round(force_calc, 2))
+    planets = {'sun': 274, 'jupiter': 24.9, 'neptune': 11.2, 'saturn': 10.4, 'uranus': 8.9, 'venus': 8.9, 'mars': 3.7, 'mercury': 3.7, 'moon': 1.6, 'pluto': 0.6, 'earth': 9.8 }
+    gravity_planet = planets.get(body)
+    force_calc = mass * gravity_planet
+    return round(force_calc, 2)
 
 force(1)
 force(1.2, 'jupiter')
@@ -46,7 +26,7 @@ force(2, 'sun')
 def pull(m1, m2, d):
     gravity = (6.674 * (10 ** -11))
     outcome = gravity * ((m1 * m2) / (d ** 2))
-    return print(outcome)
+    return outcome
 
 mass_earth = (5.972 * (10 ** 6))
 pull(800, 1500, 3)
